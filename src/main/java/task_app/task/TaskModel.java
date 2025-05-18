@@ -8,16 +8,15 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "task")
 public class TaskModel {
   @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
   private String name;
   private Boolean completed;
@@ -46,7 +45,20 @@ public class TaskModel {
     this.priority = priority;
   }
 
-  public String getId(String id) {
+  @PrePersist
+  public void prePersist() {
+    if (id == null)
+      id = UUID.randomUUID();
+    this.createdAt = LocalDateTime.now();
+    this.updatedAt = LocalDateTime.now();
+  }
+
+  @PreUpdate
+  public void preUpdate() {
+    this.updatedAt = LocalDateTime.now();
+  }
+
+  public UUID getId(UUID id) {
     return id;
   }
 
