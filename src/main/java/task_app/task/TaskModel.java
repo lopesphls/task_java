@@ -37,7 +37,9 @@ public class TaskModel {
     this.name = name;
   }
 
-  public TaskModel(String name, Boolean completed, String description, LocalDateTime deadline, Boolean priority) {
+  public TaskModel(UUID id, String name, Boolean completed, String description, LocalDateTime deadline,
+      Boolean priority) {
+    this.id = id;
     this.name = name;
     this.completed = completed;
     this.description = description;
@@ -58,7 +60,7 @@ public class TaskModel {
     this.updatedAt = LocalDateTime.now();
   }
 
-  public UUID getId(UUID id) {
+  public UUID getId() {
     return id;
   }
 
