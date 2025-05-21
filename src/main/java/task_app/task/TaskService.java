@@ -45,4 +45,20 @@ public class TaskService {
     repository.save(task);
   }
 
+  public String update(UUID id, String name, Boolean completed, String description, LocalDateTime deadline,
+      Boolean priority) {
+    TaskModel task = new TaskModel();
+    this.findOne(id);
+    if (id == null) {
+      return "error";
+    }
+    task.setName(name);
+    task.setCompleted(completed);
+    task.setDescription(description);
+    task.setDeadline(deadline);
+    task.setPriority(priority);
+    repository.save(task);
+    return "Atualização feita com sucesso.";
+  }
+
 }
