@@ -47,11 +47,11 @@ public class TaskService {
 
   public String update(UUID id, String name, Boolean completed, String description, LocalDateTime deadline,
       Boolean priority) {
-    TaskModel task = new TaskModel();
-    this.findOne(id);
-    if (id == null) {
-      return "error";
+    Optional<TaskModel> update = this.findOne(id);
+    if (update.isEmpty()) {
+      return "Tarefa não encontrada.";
     }
+    TaskModel task = update.get();
     task.setName(name);
     task.setCompleted(completed);
     task.setDescription(description);
