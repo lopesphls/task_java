@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,12 @@ public class TaskController {
   public ResponseEntity<String> putTask(@PathVariable UUID id, @RequestBody TaskRequest request) {
     String result = service.update(id, request.name, request.completed, request.description, request.deadline,
         request.priority);
+    return ResponseEntity.ok(result);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<String> deleteTask(@PathVariable UUID id) {
+    String result = service.deleteTask(id);
     return ResponseEntity.ok(result);
   }
 
