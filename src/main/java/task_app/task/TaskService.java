@@ -61,4 +61,13 @@ public class TaskService {
     return "Atualização feita com sucesso.";
   }
 
+  public String deleteTask(UUID id) {
+    if (id == null) {
+      return "Tarefa não encontrada.";
+    }
+    repository.deleteById(id);
+    return "Tarefa deletada com sucesso";
+
+  }
+
 }
