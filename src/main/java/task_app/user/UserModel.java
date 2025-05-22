@@ -36,7 +36,7 @@ public class UserModel {
   public UserModel() {
   }
 
-  public UserModel(UUID id, String name, String email, String password, String birtDate) {
+  public UserModel(UUID id, String name, String email, String password, Date birthDate) {
     this.id = id;
     this.name = name;
     this.email = email;
