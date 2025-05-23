@@ -1,7 +1,7 @@
 package task_app.user;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -26,7 +26,7 @@ public class UserModel {
   @Column(nullable = false)
   private String password;
   @Column(nullable = false)
-  private Date birthDate;
+  private LocalDate birthDate;
 
   @CreationTimestamp
   private LocalDateTime createdAt;
@@ -36,7 +36,7 @@ public class UserModel {
   public UserModel() {
   }
 
-  public UserModel(UUID id, String name, String email, String password, Date birthDate) {
+  public UserModel(UUID id, String name, String email, String password, LocalDate birthDate) {
     this.id = id;
     this.name = name;
     this.email = email;
@@ -89,11 +89,11 @@ public class UserModel {
     this.password = password;
   }
 
-  public Date getBirthDate() {
+  public LocalDate getBirthDate() {
     return birthDate;
   }
 
-  public void setBirthDate(Date birthDate) {
+  public void setBirthDate(LocalDate birthDate) {
     this.birthDate = birthDate;
   }
 
