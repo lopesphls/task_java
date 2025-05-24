@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "task")
-public class TaskModel {
+public class Task {
   @Id
   private UUID id;
   private String name;
@@ -30,14 +30,14 @@ public class TaskModel {
   @UpdateTimestamp
   private LocalDateTime updatedAt;
 
-  public TaskModel() {
+  public Task() {
   }
 
-  public TaskModel(String name) {
+  public Task(String name) {
     this.name = name;
   }
 
-  public TaskModel(UUID id, String name, Boolean completed, String description, LocalDateTime deadline,
+  public Task(UUID id, String name, Boolean completed, String description, LocalDateTime deadline,
       Boolean priority) {
     this.id = id;
     this.name = name;

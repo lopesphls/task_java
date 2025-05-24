@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class UserModel {
+public class User {
   @Id
   private UUID id;
   @Column(nullable = false)
@@ -33,10 +33,10 @@ public class UserModel {
   @UpdateTimestamp
   private LocalDateTime updatedAt;
 
-  public UserModel() {
+  public User() {
   }
 
-  public UserModel(UUID id, String name, String email, String password, LocalDate birthDate) {
+  public User(UUID id, String name, String email, String password, LocalDate birthDate) {
     this.id = id;
     this.name = name;
     this.email = email;

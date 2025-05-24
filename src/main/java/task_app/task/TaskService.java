@@ -16,16 +16,16 @@ public class TaskService {
     this.repository = repository;
   }
 
-  public List<TaskModel> findAll() {
+  public List<Task> findAll() {
     return repository.findAll();
   }
 
-  public Optional<TaskModel> findOne(UUID id) {
+  public Optional<Task> findOne(UUID id) {
     return repository.findById(id);
   }
 
   public void create(String name, Boolean completed, String description, LocalDateTime deadline, Boolean priority) {
-    TaskModel task = new TaskModel();
+    Task task = new Task();
     task.setName(name);
     if (completed != null) {
       task.setCompleted(completed);
@@ -47,11 +47,11 @@ public class TaskService {
 
   public String update(UUID id, String name, Boolean completed, String description, LocalDateTime deadline,
       Boolean priority) {
-    Optional<TaskModel> update = this.findOne(id);
+    Optional<Task> update = this.findOne(id);
     if (update.isEmpty()) {
       return "Tarefa não encontrada.";
     }
-    TaskModel task = update.get();
+    Task task = update.get();
     task.setName(name);
     task.setCompleted(completed);
     task.setDescription(description);

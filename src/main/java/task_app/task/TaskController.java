@@ -27,12 +27,12 @@ public class TaskController {
   }
 
   @GetMapping()
-  public List<TaskModel> getAll() {
+  public List<Task> getAll() {
     return service.findAll();
   }
 
   @GetMapping("/{id}")
-  public Optional<TaskModel> getOne(@PathVariable UUID id) {
+  public Optional<Task> getOne(@PathVariable UUID id) {
     return service.findOne(id);
   }
 
