@@ -51,4 +51,13 @@ public class UserService {
     return "Usuário alterado com sucesso";
   }
 
+  public String deleteUser(UUID id) {
+    if (id == null) {
+      return "Usuário não encontrada.";
+    }
+    repository.deleteById(id);
+    return "Usuário deletada com sucesso";
+
+  }
+
 }

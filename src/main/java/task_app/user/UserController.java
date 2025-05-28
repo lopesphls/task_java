@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +38,7 @@ public class UserController {
     return result;
   }
 
-  @PostMapping("/")
+  @PostMapping("")
   public ResponseEntity<String> postUser(@RequestBody UserRequest request) {
     String result = service.create(request.name, request.email, request.password, request.birthDate);
     return ResponseEntity.ok(result);
@@ -46,6 +47,12 @@ public class UserController {
   @PutMapping("/{id}")
   public ResponseEntity<String> putUser(@PathVariable UUID id, @RequestBody UserRequest request) {
     String result = service.update(id, request.name, request.email, request.password, request.birthDate);
+    return ResponseEntity.ok(result);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<String> deleteUser(@PathVariable UUID id) {
+    String result = service.deleteUser(id);
     return ResponseEntity.ok(result);
   }
 
