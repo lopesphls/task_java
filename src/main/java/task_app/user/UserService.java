@@ -43,12 +43,26 @@ public class UserService {
       return "Usuário não encontrado";
     }
     User user = update.get();
-    user.setName(name);
-    user.setEmail(email);
-    user.setPassword(password);
-    user.setBirthDate(birthDate);
-    repository.save(user);
-    return "Usuário alterado com sucesso";
+
+    if (name != null && !name.equals(user.getName())) {
+      user.setName(name);
+    }
+
+    if (email != null && !email.equals(user.getEmail())) {
+      user.setEmail(email);
+    }
+
+    if (password != null && !password.equals(user.getPassword())) {
+      user.setPassword(password);
+    }
+
+    if (birthDate != null && !birthDate.equals(user.getBirthDate())) {
+      user.setBirthDate(birthDate);
+    }
+
+    this.repository.save(user);
+
+    return "Usuário atualizado com sucesso";
   }
 
   public String deleteUser(UUID id) {
